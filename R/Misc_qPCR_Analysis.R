@@ -57,6 +57,10 @@ if(!require(readxl)){
   library(readxl) # Read excel files
 }
 
+if(!require(RCurl)){
+  install.packages("RCurl")
+  library(RCurl) # Read excel files
+}
 
 ################################################################################
 ################################ 2. Functions ##################################
@@ -771,8 +775,6 @@ qPCR_report <- function(ct_data,
       output_file = output_file,
       params = list(ct_data = ct_data, dd_data = dd_data, pal = pal)
     )
-  
-  
   
   )
   
