@@ -753,17 +753,30 @@ qPCR_report <- function(ct_data,
   ################################## Code ####################################
   ############################################################################
   
-  report_dir <- "/home/user/Documents/Files/Projects/LAB_qPCR_Data_Analysis/Rmd/qPCR_Analysis_Report.Rmd"
+  URL <- "https://raw.githubusercontent.com/ericcd00/qPCR_Test/main/Rmd/qPCR_Analysis_Report.Rmd"
+  
+  knitrRmd <- paste(readLines(textConnection(getURL(URL))), collapse="\n")
+  
+  setwd(tempdir())
+  fn=tempfile()
+  fn.Rmd <- paste(fn, ".Rmd", sep="")
+  cat(knitrRmd, file=fn.Rmd)
+  tf <- fn.Rmd
   
   suppressWarnings(
     rmarkdown::render(
-      input = report_dir,
+      input = tf,
       output_format = output_format,
       output_dir = output_dir,
       output_file = output_file,
       params = list(ct_data = ct_data, dd_data = dd_data, pal = pal)
     )
+  
+  
+  
   )
+  
+  file.remove(tf)
   
   report_path <- path.expand(file.path(paste0(output_dir, "/", output_file, ".html")))
   utils::browseURL(report_path)

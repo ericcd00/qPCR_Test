@@ -155,7 +155,7 @@ exp_names = c("Test1", "Test2", "Test3")
 ########################## 2. Source all functions #############################
 ################################################################################
 
-source("/home/user/Documents/Files/Projects/LAB_qPCR_Data_Analysis/R/Misc_qPCR_Analysis.R") # All of the functions we will need 
+source("https://raw.githubusercontent.com/ericcd00/qPCR_Test/main/R/Misc_qPCR_Analysis.R") # All of the functions we will need 
 
 
 
